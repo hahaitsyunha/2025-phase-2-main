@@ -1,0 +1,36 @@
+class Solution:
+    def makeFancyString(self, s: str) -> str:
+        result = ""
+        for letter in s:
+            if len(result) >= 2 and result[-1] == letter and result[-2] == letter:
+                continue
+            else:
+                result += letter
+        return result
+
+
+# Test helper
+def test_makeFancyString():
+    sol = Solution()
+    test_cases = [
+        ("leeetcode", "leetcode"),
+        ("aaabaaaa", "aabaa"),
+        ("aab", "aab"),
+        ("aaa", "aa"),
+        ("", ""),
+        ("a", "a"),
+        ("abbbbccccc", "abbcc"),
+        ("abc", "abc"),
+        ("aaaaaaaaaaaa", "aa"),
+    ]
+
+    for i, (input_str, expected) in enumerate(test_cases, 1):
+        result = sol.makeFancyString(input_str)
+        print(f"Test case {i}: {'PASS' if result == expected else 'FAIL'}")
+        print(f"Input:    {input_str}")
+        print(f"Expected: {expected}")
+        print(f"Output:   {result}")
+        print("-----")
+
+# Run the tests
+test_makeFancyString()
